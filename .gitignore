@@ -4,6 +4,8 @@ logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+npm-debug.log
+
 
 # Runtime data
 pids
@@ -57,3 +59,8 @@ typings/
 # dotenv environment variables file
 .env
 
+.DS_Store
+dist/
+.idea
+*.iml
+package-lock.json

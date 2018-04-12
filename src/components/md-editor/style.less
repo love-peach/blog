@@ -1,0 +1,82 @@
+@import "../../assets/less/mixins/variable";
+
+@mdToolBarHeight: 30px;
+.md-editor {
+    position: relative;
+    border: 1px solid @colorGreyLight;
+    margin-bottom: 20px;
+    .editor-toolbar {
+        height: @mdToolBarHeight;
+        background-color: #fff;
+        border-bottom: 1px solid @colorGreyLight;
+        .toolbar-mode {
+            .mode-item {
+                float: left;
+                margin: 0 3px;
+            }
+            .mode-item-link {
+                display: block;
+                width: @mdToolBarHeight;
+                height: @mdToolBarHeight;
+                line-height: @mdToolBarHeight;
+                text-align: center;
+            }
+        }
+    }
+    .editor-write,
+    .editor-preview {
+        transition: width .3s ease;
+        overflow-x: hidden;
+    }
+    .editor-write {
+        position: relative;
+        z-index: 10;
+        min-height: 400px;
+        background-color: #fff;
+        border-right: 1px solid @colorGreyLight;
+        textarea {
+            width: 100%;
+            height: 100%;
+            min-height: 400px;
+            padding: 10px;
+            outline: none;
+            border: 0;
+
+            font-size: 14px;
+
+        }
+    }
+    .editor-preview {
+        position: absolute;
+        top: @mdToolBarHeight;
+        bottom: 0;
+        right: 0;
+        padding: 10px;
+        overflow: auto;
+        background-color: lighten(@colorSilver, 2%);
+    }
+}
+.editMode {
+    .editor-write {
+        width: 100%;
+    }
+    .editor-preview {
+        width: 0;
+    }
+}
+.liveMode {
+    .editor-write {
+        width: 50%;
+    }
+    .editor-preview {
+        width: 50%;
+    }
+}
+.previewMode {
+    .editor-write {
+        width: 0;
+    }
+    .editor-preview {
+        width: 100%;
+    }
+}

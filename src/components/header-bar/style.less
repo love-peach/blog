@@ -1,0 +1,83 @@
+@import "../../assets/less/mixins/variable";
+
+.header-bar {
+    position: fixed;
+    z-index: 99;
+    top: 0;
+    width: 100%;
+    background-color: #fff;
+    transition: top .25s ease;
+    &.header-bar-hidden {
+        top: -@navbarHeight - 10;
+    }
+    .box-shadow;
+    .nav-wrap {
+        font-size: 0;
+    }
+    .nav-bread {
+        margin-right: 30px;
+        display: inline-block;
+        font-size: 20px;
+        line-height: @navbarHeight;
+        vertical-align: bottom;
+    }
+    .nav-link {
+        font-size: 14px;
+        position: relative;
+        padding: 0 15px;
+        margin: 0 10px;
+        display: inline-block;
+        line-height: @navbarHeight;
+        transition: color .25s ease;
+        &:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            height: 0;
+            width: 0;
+            border-bottom: 2px solid @colorInfo;
+            transition: all .25s ease;
+        }
+    }
+    .nav-link:hover {
+        &:after {
+            width: 100%;
+            left: 0;
+        }
+    }
+    .nav-link.current {
+        color: @colorInfo;
+        &:after {
+            width: 100%;
+            left: 0;
+        }
+    }
+
+    .search-wrap {
+        position: relative;
+        margin: 15px 0;
+    }
+    .search-input {
+        float: right;
+        height: 30px;
+        width: 100%;
+        padding: 0 50px 0 10px;
+        font-size: 14px;
+        border: 2px solid @colorInfo;
+        border-radius: 30px;
+        outline: none;
+    }
+    .search-text {
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 30px;
+        line-height: 30px;
+        padding: 0 10px;
+        color: #fff;
+        border-radius: 0 30px 30px 0;
+        background-color: @colorInfo;
+        cursor: pointer;
+    }
+}

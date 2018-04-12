@@ -1,0 +1,26 @@
+@import "../../assets/less/mixins/variable";
+
+.md-anchor-nav {
+    position: relative;
+    z-index: 10;
+    margin-left: 15px;
+    list-style: square;
+    padding-left: 10px;
+}
+.md-anchor-nav a {
+    display: block;
+    padding: 5px 0;
+    line-height: 1.5;
+    color: @colorGreyHeavy;
+    &:link,
+    &:visited {
+        text-decoration: none;
+    }
+    &:hover {
+        color: @colorSuccess;
+        text-decoration: underline;
+    }
+    &.active {
+        color: @colorSuccess;
+    }
+}

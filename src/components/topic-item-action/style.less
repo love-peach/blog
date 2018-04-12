@@ -1,0 +1,22 @@
+@import "../../assets/less/mixins/variable";
+
+.topic-action-wrap {
+    font-size: 0;
+    border-top: 1px solid @colorSilver;
+}
+.topic-action-wrap .topic-action {
+    display: inline-block;
+    width: 25%;
+    font-size: 14px;
+    text-align: center;
+    line-height: 48px;
+    color: @colorGreyHeavy;
+    background-color: #fff;
+    transition: background-color .25s ease;
+}
+.topic-action-wrap .topic-action:hover {
+    background-color: lighten(@colorSilver, 1.5%);
+}
+.topic-action-wrap .topic-action + .topic-action {
+    border-left: 1px solid @colorSilver;
+}
