@@ -28,7 +28,6 @@ const state = () => ({
 
 const actions = {
     async getArticleList({commit}, config) {
-        console.log(config, 'config');
         const {data, code} = await api.getArticleList({...config});
         if (data && code === 200) {
             commit(mutationTypes.RECEIVE_ARTICLE_LIST, {

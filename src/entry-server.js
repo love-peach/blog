@@ -24,7 +24,8 @@ export default context => {
                 if (Component.asyncData) {
                     return Component.asyncData({
                         store,
-                        route: router.currentRoute
+                        route: router.currentRoute,
+                        cookies: context.cookies,
                     });
                 }
             })).then(() => {

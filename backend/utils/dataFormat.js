@@ -16,7 +16,6 @@ exports.list = (req, res, model, sort = '-_id') => {
     if (!page) page = 1;
     if (!limit) limit = 10;
     const skip = (page - 1) * limit;
-    console.log(req.query, 'query');
     Promise.all([
         model
             .find()

@@ -112,7 +112,8 @@ function render(req, res) {
     const context = {
         title: 'Vue HN 2.0', // default title
         description: 'M.M.F 小屋',
-        url: req.url
+        url: req.url,
+        cookies: req.cookies
     };
     renderer.renderToString(context, (err, html) => {
         if (err) {

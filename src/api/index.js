@@ -1,4 +1,7 @@
-const request = require('./request');
+import config from './config';
+import { createAPI } from 'create-api';
+
+const request = createAPI(config);
 
 // 发布文章
 exports.postArticle = function (params) {
@@ -7,7 +10,6 @@ exports.postArticle = function (params) {
 
 // 获取文章列表
 exports.getArticleList = function (params) {
-    console.log(params, 'params');
     return request.get('frontend/article/list', params);
 };
 
