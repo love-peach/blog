@@ -1,0 +1,41 @@
+@import "../../assets/less/mixins/variable.less";
+
+.backend-article-wrap {
+    background-color: #fff;
+    padding-right: 20px;
+    padding-left: 20px;
+    padding-top: 20px;
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        th {
+            border: 1px solid @colorGreyLight;
+            padding: 10px 5px;
+        }
+        td {
+            padding: 5px;
+            border: 1px solid @colorGreyLight;
+        }
+        tr:hover {
+            background-color: lighten(@colorGreyLight, 5%);
+        }
+        tr:first-child:hover {
+            background-color: transparent;
+        }
+    }
+    .img-wrap {
+        display: block;
+        position: relative;
+        padding-top: 60%;
+        overflow: hidden;
+        background-color: #fff;
+        img {
+            position: absolute;
+            width: 100%;
+            top: 50%;
+            left: 50%;
+            margin-top: -22px;
+            margin-left: -35px;
+        }
+    }
+}

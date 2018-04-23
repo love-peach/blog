@@ -8,18 +8,19 @@
 
 @borderColor: #eaeef1;
 
-@colorPrimary: #545ca6;
-
 @colorSilver: #f1f1f1;  /* 背景色*/
 @colorGreyLight: #e0e0e0;
 @colorGrey: #b0b0b0;
 @colorGreyHeavy: #616161;
 @colorDark: #333;
+@colorPrimary: #545ca6;
 @colorWarning: #ffac13;
 @colorSuccess: #83c44e;
 @colorDanger: #e53935;
 @colorInfo: #2196f3;
 
+@colorHeavy: #221f42;
+@colorHeaveDark: #1B1935;
 
 @radiusSize: 4px;
 
@@ -51,7 +52,7 @@
 }
 
 // 阴影
-.box-shadow (@x: 0, @y: 15px, @blur: 30px, @color: rgba(0,0,0,.1)) {
+.box-shadow (@x: 0, @y: 15px, @blur: 30px, @insert: 0, @color: rgba(0,0,0,.1)) {
     box-shadow: @arguments;
     -moz-box-shadow: @arguments;
     -webkit-box-shadow: @arguments;

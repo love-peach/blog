@@ -1,7 +1,6 @@
 export default {
     props: {
         title: {
-            require: true,
             type: String
         }
     },

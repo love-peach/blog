@@ -5,6 +5,10 @@ import '~assets/less/common.less';
 import '~assets/css/github-markdown.css';
 // import '~assets/css/hljs/monokai-sublime.css';
 import '~assets/css/hljs/solarized_light.css';
+import ProgressBar from './components/progress-bar/index.vue';
+
+const loading = (Vue.prototype.$loading = new Vue(ProgressBar).$mount());
+document.body.appendChild(loading.$el);
 
 Vue.mixin({
     beforeRouteUpdate(to, from, next) {
@@ -25,7 +29,6 @@ const { app, router, store } = createApp();
 if (window.__INITIAL_STATE__) {
     store.replaceState(window.__INITIAL_STATE__);
 }
-
 router.onReady(() => {
     // 添加路由钩子函数，用于处理 asyncData.
     // 在初始路由 resolve 后执行，
@@ -43,6 +46,7 @@ router.onReady(() => {
         if (!activated.length) {
             return next();
         }
+        loading.start();
         // 这里如果有加载指示器(loading indicator)，就触发
         Promise.all(activated.map(c => {
             if (c.asyncData) {
@@ -50,6 +54,7 @@ router.onReady(() => {
             }
         })).then(() => {
             // 停止加载指示器(loading indicator)
+            loading.finish();
             next();
         }).catch(next);
     });

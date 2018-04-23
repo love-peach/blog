@@ -1,6 +1,5 @@
 const mongoose = require('../db');
 const Schema = mongoose.Schema;
-const Promise = require('bluebird');
 
 const ArticleSchema = new Schema({
     title: String, // 标题
@@ -16,6 +15,10 @@ const ArticleSchema = new Schema({
     commentCount: Number, // 评论数
     status: String, // 状态
     statusName: String, // 状态-显示
+    offState: { // 上架状态
+        type: Boolean,
+        default: true
+    },
     createAt: { // 创建日期
         type: Date,
         default: Date.now()
@@ -35,9 +38,9 @@ ArticleSchema.pre('save', function (next) {
 });
 
 ArticleSchema.statics = {
-    fetch: function ({sort, skip, limit}, cb) {
+    fetch: function ({data, sort, skip, limit}, cb) {
         return this
-            .find({})
+            .find(data)
             .sort(sort)
             .skip(skip)
             .limit(limit)
@@ -51,7 +54,5 @@ ArticleSchema.statics = {
 };
 
 const Article = mongoose.model('Article', ArticleSchema);
-Promise.promisifyAll(Article);
-Promise.promisifyAll(Article.prototype);
 
 module.exports = Article;

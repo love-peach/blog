@@ -1,0 +1,76 @@
+@import "../../assets/less/mixins/variable";
+
+.tag {
+    display: inline-block;
+    padding: 0 10px;
+    //border-radius: 4px;
+    box-sizing: border-box;
+    white-space: nowrap;
+    font-size: 12px;
+    //border-style: solid;
+    //border-width: 1px;
+    color: #fff;
+
+    margin-right: 5px;
+    &:last-child {
+        margin-right: 0;
+    }
+
+    &-lg {
+        height: 32px;
+        line-height: 32px;
+        margin-right: 10px;
+    }
+    &-md {
+        height: 28px;
+        line-height: 28px;
+        margin-right: 10px;
+    }
+    &-sm {
+        height: 24px;
+        padding: 0 8px;
+        line-height: 24px;
+    }
+    &-xs {
+        height: 20px;
+        padding: 0 5px;
+        line-height: 20px;
+    }
+
+    &-default {
+        background-color: @colorGreyLight;
+        //border: 1px solid @colorGrey;
+        color: @colorGreyHeavy;
+    }
+    &-primary {
+        background-color: @colorPrimary;
+        //border-color: @colorPrimary;
+        //color: darken(@colorPrimary, 10%);
+    }
+    &-success {
+        background-color: @colorSuccess;
+        //border-color: @colorSuccess;
+        //color: darken(@colorSuccess, 10%);
+    }
+    &-info {
+        background-color: @colorInfo;
+        //border-color: @colorInfo;
+        //color: darken(@colorInfo, 10%);
+    }
+    &-warning {
+        background-color: @colorWarning;
+        //border-color: @colorWarning;
+        //color: darken(@colorWarning, 10%);
+    }
+    &-danger {
+        background-color: @colorDanger;
+        //border-color: @colorDanger;
+        //color: darken(@colorDanger, 10%);
+    }
+    &-dark {
+        background-color: @colorDark;
+        //border-color: @colorDark;
+        //color: darken(@colorDark, 10%);
+    }
+
+}

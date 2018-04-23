@@ -53,6 +53,9 @@ export default {
             for (var i = 0; i < this.articleTitles.length; i++) {
                 let contentTitle = document.getElementById(`${idPrefix}${i}`);
                 let navTitle = document.querySelector(`a[href="#${idPrefix}${i}"]`);
+                if (!navTitle) {
+                    continue;
+                }
                 list.push({
                     y: contentTitle.getBoundingClientRect().top,
                     navTitleOffsetTop: navTitle.offsetTop,

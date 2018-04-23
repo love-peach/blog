@@ -24,6 +24,7 @@ export function createAPI({server}) {
                         url,
                         params,
                         headers: {
+                            'Access-Control-Allow-Origin': '*',
                             'X-Requested-With': 'XMLHttpRequest',
                             'Cookie': parseCookie(cookies)
                         },

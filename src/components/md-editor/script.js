@@ -8,9 +8,10 @@ marked.setOptions({
 
 export default {
     name: 'md-editor',
+    props: ['value'],
     data() {
         return {
-            mdText: '',
+            mdText: this.value,
             editorMode: 'liveMode'
         };
     },
@@ -18,6 +19,13 @@ export default {
         mdHtml() {
             return marked(this.mdText);
         }
+    },
+    mounted() {
+        this.$nextTick(() => {
+            if (this.value) {
+                this.mdText = this.value;
+            }
+        });
     },
     updated() {
         this.updateValue();
@@ -28,6 +36,11 @@ export default {
         },
         updateValue() {
             this.$emit('input', this.mdText);
+        }
+    },
+    watch: {
+        value(value) {
+            this.mdText = value;
         }
     }
 };

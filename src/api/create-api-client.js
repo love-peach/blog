@@ -31,6 +31,7 @@ export function createAPI({client}) {
                     url,
                     params,
                     headers: {
+                        'Access-Control-Allow-Origin': '*',
                         'X-Requested-With': 'XMLHttpRequest'
                     },
                     method: 'get'
@@ -47,6 +48,23 @@ export function createAPI({client}) {
                     url,
                     data: qs.stringify(params),
                     method: 'post',
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest',
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    }
+                }).then(res => {
+                    resolve(res.data);
+                }).catch(error => {
+                    reject(error);
+                });
+            });
+        },
+        del(url, params = {}) {
+            return new Promise((resolve, reject) => {
+                axios({
+                    url,
+                    data: qs.stringify(params),
+                    method: 'delete',
                     headers: {
                         'X-Requested-With': 'XMLHttpRequest',
                         'Content-Type': 'application/x-www-form-urlencoded'

@@ -1,0 +1,60 @@
+@import "../../assets/less/mixins/variable.less";
+
+.backend-wrap {
+    .quickly-entrance {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -55%);
+        font-size: 0;
+        text-align: center;
+        width: 100%;
+        min-width: 320px;
+        max-width: 500px;
+        .entrance-item {
+            display: inline-block;
+            border: 1px solid transparent;
+            width: 50%;
+            .entrance-link {
+                display: block;
+                padding: 15% 0;
+                font-size: 20px;
+                color: @colorGreyHeavy;
+                &:hover {
+                    color: @colorInfo;
+                    .iconfont {
+                        color: @colorInfo;
+                    }
+                }
+            }
+            .iconfont {
+                display: inline-block;
+                margin-bottom: 10px;
+                font-size: 60px;
+                line-height: 1;
+                color: @colorGrey;
+            }
+        }
+        //.entrance-item:first-child {
+        //    border-right: 1px solid red;
+        //    border-bottom: 1px solid red;
+        //}
+        //.entrance-item:last-child {
+        //    border-top: 1px solid red;
+        //    border-left: 1px solid red;
+        //}
+        .entrance-item:nth-child(1) {
+            border-right: 1px solid @colorGreyLight;
+            border-bottom: 1px solid @colorGreyLight;
+        }
+        .entrance-item:nth-child(2) {
+            border-bottom: 1px solid @colorGreyLight;
+        }
+        .entrance-item:nth-child(3) {
+            border-right: 1px solid @colorGreyLight;
+        }
+        .entrance-item:nth-child(4) {
+            //border-left: 1px solid red;
+        }
+    }
+}

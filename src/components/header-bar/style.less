@@ -5,21 +5,32 @@
     z-index: 99;
     top: 0;
     width: 100%;
-    background-color: #fff;
-    transition: top .25s ease;
-    &.header-bar-hidden {
-        top: -@navbarHeight - 10;
-    }
-    .box-shadow;
-    .nav-wrap {
-        font-size: 0;
+    transition: all .25s ease;
+    background-color: rgba(255,255,255,.9);
+    .box-shadow(0, 1px, 5px ,0, rgba(0,0,0,.09));
+    &.header-bar-black {
+        background-color: @colorHeavy;
+        color: #fff;
+        .nav-bread {
+            color: #fff;
+        }
     }
     .nav-bread {
         margin-right: 30px;
         display: inline-block;
-        font-size: 20px;
-        line-height: @navbarHeight;
+        //line-height: @navbarHeight;
         vertical-align: bottom;
+        height: 60px;
+        width: 130px;
+        overflow-y: hidden;
+        position: relative;
+        color: @colorGreyHeavy;
+        .iconfont {
+            position: absolute;
+            top: 50%;
+            font-size: 130px;
+            transform: translate(0, -50%);
+        }
     }
     .nav-link {
         font-size: 14px;
@@ -54,30 +65,47 @@
         }
     }
 
-    .search-wrap {
+    .nav-menu-wrap {
         position: relative;
-        margin: 15px 0;
+        &:hover .nav-menu-list {
+            height: (@navbarHeight + 1) * 5;
+        }
+        .nav-menu {
+            position: absolute;
+            top: -@navbarHeight;
+            right:0;
+            padding: 0 10px;
+            line-height: @navbarHeight;
+            &:hover + .nav-menu-list {
+                height: (@navbarHeight + 1) * 5;
+            }
+            .icon-menu {
+                font-size: 24px;
+                vertical-align: middle;
+                line-height: 1;
+            }
+        }
+        .nav-menu-list {
+            height: 0;
+            overflow: hidden;
+            transition: height .25s ease;
+            .nav-link {
+                display: block;
+                text-align: center;
+                border-top: 1px solid @colorGreyLight;
+                &:hover {
+                    &:after {
+                        display: none;
+                    }
+                }
+                &.current {
+                    color: @colorInfo;
+                    &:after {
+                        display: none;
+                    }
+                }
+            }
+        }
     }
-    .search-input {
-        float: right;
-        height: 30px;
-        width: 100%;
-        padding: 0 50px 0 10px;
-        font-size: 14px;
-        border: 2px solid @colorInfo;
-        border-radius: 30px;
-        outline: none;
-    }
-    .search-text {
-        position: absolute;
-        top: 0;
-        right: 0;
-        height: 30px;
-        line-height: 30px;
-        padding: 0 10px;
-        color: #fff;
-        border-radius: 0 30px 30px 0;
-        background-color: @colorInfo;
-        cursor: pointer;
-    }
+
 }

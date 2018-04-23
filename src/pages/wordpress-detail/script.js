@@ -1,7 +1,8 @@
 import { mapGetters } from 'vuex';
 import cardTag from '../../components/card-tag/index.vue';
 import cardMdNav from '../../components/card-md-nav/index.vue';
-
+import Grade from '../../assets/js/grade';
+import Tag from '../../components/tag/index.vue';
 export default {
     props: [],
     name: 'wordpress-detail',
@@ -12,10 +13,13 @@ export default {
     },
     components: {
         cardTag,
-        cardMdNav
+        cardMdNav,
+        Tag
     },
     mounted() {
         window.addEventListener('scroll', this.scrollHandler);
+        const container = document.getElementById('gradeWrap');
+        Grade(container, this.article.data.poster);
     },
     destroyed() {
         window.removeEventListener('scroll', this.scrollHandler);
@@ -24,7 +28,8 @@ export default {
         scrollHandler() {
             const t = document.documentElement.scrollTop || document.body.scrollTop;
             var jsCardMdNav = document.getElementById('jsCardMdNav');
-            if (t >= 0) {
+            var jsGradeWrap = document.getElementById('gradeWrap');
+            if (t >= jsGradeWrap.clientHeight) {
                 jsCardMdNav.classList.add('fixed-side-card');
             } else {
                 jsCardMdNav.classList.remove('fixed-side-card');

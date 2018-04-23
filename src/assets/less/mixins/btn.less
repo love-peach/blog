@@ -23,9 +23,12 @@
     }
 
     &-default {
-        color: @textMiddle;
-        background-color: #fff;
-        border: 1px solid @borderColor;
+        color: #fff !important;
+        background-color: @colorGrey;
+        border: 1px solid @colorGrey;
+        &:hover {
+            background-color: darken(@colorGrey, 20%)
+        }
     }
 
     &-primary {
@@ -74,6 +77,15 @@
         border-color: @colorDark;
         &:hover {
             background-color: saturate(@colorDark, 20%)
+        }
+    }
+    &-disabled {
+        color: #fff !important;
+        background-color: @colorGreyLight;
+        border: 1px solid @colorGreyLight;
+        &:hover {
+            cursor: not-allowed;
+            background-color: @colorGreyLight;
         }
     }
 }

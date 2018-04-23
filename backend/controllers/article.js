@@ -1,14 +1,59 @@
 const Article = require('../schemaModels/article');
 const _ = require('underscore');
 
-const dataFormat = require('../utils/dataFormat');
-const list = dataFormat.list;
-
 /**
 * 获取文章列表
 * */
 exports.list = function (req, res) {
-    list(req, res, Article, '_id');
+    let { limit, page, key } = req.query;
+    const sort = '-updateAt';
+
+    // 查询条件
+    let data = {
+        // offState: true
+    };
+    if (key) {
+        const reg = new RegExp(key, 'i');
+        data.title = { $regex: reg };
+    }
+
+    // 分页相关
+    page = parseInt(page, 10) || 1;
+    limit = parseInt(limit, 10) || 10;
+    const skip = (page - 1) * limit;
+    let total = 10;
+
+    Article.count(data, function (err, count) {
+        if (err) {
+            console.log(err);
+        }
+        total = count;
+    });
+
+    Article.fetch({data, limit, sort, skip}, function (err, article) {
+        if (err) {
+            res.json({
+                code: -200,
+                message: err.toString()
+            });
+        } else {
+            const totalPage = Math.ceil(total / limit);
+            const json = {
+                code: 200,
+                data: {
+                    list: article.map(item => {
+                        item.content = `${item.content.substring(0, 380)}...`;
+                        return item;
+                    }),
+                    total,
+                    totalPage,
+                    hasNext: totalPage > page ? 1 : 0,
+                    hasPrev: page > 1
+                }
+            };
+            res.json(json);
+        }
+    });
 };
 
 /**
@@ -29,6 +74,52 @@ exports.detail = function (req, res) {
             });
         }
     });
+};
+
+/**
+ * 上下架文章
+ * */
+exports.toggleOffState = function (req, res) {
+    const { id, offState } = req.body;
+    if (id) {
+        Article.update({_id: id}, { offState }, function (err, article) {
+            if (err) {
+                res.json({
+                    code: -200,
+                    message: err.toString()
+                });
+            } else {
+                res.json({
+                    code: 200,
+                    data: article,
+                    message: '更新成功'
+                });
+            }
+        });
+    }
+};
+
+/**
+ * 删除文章
+ * */
+exports.delete = function (req, res) {
+    var id = req.body.id;
+    console.log(id, 'ididid');
+    if (id) {
+        Article.remove({_id: id}, function (err, article) {
+            if (err) {
+                res.json({
+                    code: -200,
+                    message: err.toString()
+                });
+            } else {
+                res.json({
+                    code: 200,
+                    data: article
+                });
+            }
+        });
+    }
 };
 
 /**

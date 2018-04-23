@@ -5,12 +5,19 @@
                 <div class="topic-list">
                     <topicItem v-for="topic,index in topics.list" :key="index" :topic="topic"/>
                 </div>
-                <a v-if="topics.hasNext" href="javascript:;" class="z-btn z-btn-full z-btn-md z-btn-primary" @click="loadMore">更多</a>
+                <div v-if="topics.list.length === 0" class="no-topic-list">
+                    暂无数据
+                </div>
+
+                <div class="center hover-part-style" style="background-color: #fff;padding: 20px 0;">
+                    <Pagenation :all="topics.totalPage" :cur="page" :callback="changePage"/>
+                </div>
+
+                <!--<a v-if="topics.hasNext" href="javascript:;" class="z-btn z-btn-full z-btn-md z-btn-primary btn-more" @click="loadMore">更多</a>-->
             </div>
             <div class="z-col-lg-15 z-col-md-17 z-col-sm-20 z-col-xs-60">
+                <cardSearch />
                 <cardTag />
-                <cardTag />
-
             </div>
         </div>
     </div>

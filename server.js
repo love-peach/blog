@@ -110,8 +110,8 @@ function render(req, res) {
     };
 
     const context = {
-        title: 'Vue HN 2.0', // default title
-        description: 'M.M.F 小屋',
+        title: 'zhangjinpei', // default title
+        description: '张晋佩个人博客',
         url: req.url,
         cookies: req.cookies
     };

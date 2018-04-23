@@ -1,6 +1,6 @@
 const isProd = process.env.NODE_ENV === 'production';
 
-const proUrl = 'https://news-at.zhihu.com'; // 生产环境api地址
+const proUrl = 'http://localhost:8080'; // 生产环境api地址
 const devUrl = 'http://localhost:8080'; // 开发api地址
 
 const FaceUrl = isProd ? proUrl : devUrl;

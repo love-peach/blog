@@ -17,3 +17,13 @@ exports.getArticleList = function (params) {
 exports.getArticleItem = function (params) {
     return request.get('frontend/article/item', params);
 };
+
+// 上下架文章
+exports.toggleOffState = function (params) {
+    return request.post('backend/article/offState', params);
+};
+
+// 删除文章
+exports.delArticle = function (params) {
+    return request.del('backend/article/del', params);
+};

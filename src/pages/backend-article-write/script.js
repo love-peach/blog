@@ -1,10 +1,12 @@
 import mdEditor from '../../components/md-editor/index.vue';
+import switchBar from '../../components/switch/index.vue';
 import api from '../../api/index';
 export default {
     props: [],
     name: 'admin-write',
     components: {
-        mdEditor
+        mdEditor,
+        switchBar
     },
     data() {
         return {
@@ -13,12 +15,31 @@ export default {
                 category: 'CSS',
                 tag: '',
                 poster: '',
-                content: ''
+                content: '',
+                offState: true
             }
         };
     },
+    computed: {
+        isDisabled() {
+            return this.formData.content === '';
+        }
+    },
+    beforeMount() {
+        const { query: { id }, path } = this.$route;
+        if (id) {
+            this.$store.dispatch('frontend/wordpress/getArticleItem', { id, path }).then(() => {
+                this.$nextTick(() => {
+                    this.formData = Object.assign({}, this.formData, this.$store.getters['frontend/wordpress/getArticleItem'].data);
+                });
+            });
+        }
+    },
     methods: {
         submit() {
+            !this.isDisabled && this.postArticle();
+        },
+        postArticle() {
             const vm = this;
             const params = {
                 ...this.formData,
@@ -31,6 +52,11 @@ export default {
                 .catch(function (err) {
                     console.log(err);
                 });
+        }
+    },
+    watch: {
+        'formData.title'(value) {
+            console.log(value);
         }
     }
 };

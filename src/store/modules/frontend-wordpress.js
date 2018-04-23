@@ -15,7 +15,9 @@ const state = () => ({
         list: [],
         hasNext: 0,
         page: 1,
-        path: ''
+        path: '',
+        total: 10,
+        totalPage: 1
     },
     item: {
         data: {},
@@ -28,6 +30,7 @@ const state = () => ({
 
 const actions = {
     async getArticleList({commit}, config) {
+        console.log(config, 'config');
         const {data, code} = await api.getArticleList({...config});
         if (data && code === 200) {
             commit(mutationTypes.RECEIVE_ARTICLE_LIST, {
@@ -56,18 +59,15 @@ const actions = {
 };
 
 const mutations = {
-    [mutationTypes.RECEIVE_ARTICLE_LIST](state, {list, hasNext, hasPrev, page, path}) {
-        if (page === 1) {
-            list = [].concat(list);
-        } else {
-            list = state.lists.list.concat(list);
-        }
+    [mutationTypes.RECEIVE_ARTICLE_LIST](state, {list, hasNext, hasPrev, page, path, total, totalPage}) {
         state.lists = {
             list,
             hasNext,
             hasPrev,
             page,
-            path
+            path,
+            total,
+            totalPage
         };
     },
     [mutationTypes.RECEIVE_ARTICLE_ITEM](state, { data, path }) {
@@ -91,7 +91,7 @@ const getters = {
     },
     getArticleItemMdHtml: (state) => {
         const renderer = new marked.Renderer();
-        let index = -1;
+        let index = 0;
         renderer.heading = function (text, level) {
             return `<h${level} id="titleAnchor-${index++}">${text}</h${level}>`;
         };

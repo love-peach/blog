@@ -10,8 +10,21 @@
         </select>
         <input v-model="formData.tag"  class="write-input tag" type="text" placeholder="标签,中间用逗号分隔">
         <input v-model="formData.poster"  class="write-input poster" type="text" placeholder="粘贴图片URL">
-        <mdEditor v-model="formData.content" />
-        <a href="javascript:;" class="z-btn z-btn-md z-btn-success fr" @click="submit">确认发布</a>
+        <mdEditor v-model="formData.content"/>
+
+
+        <a
+            href="javascript:;"
+            class="z-btn z-btn-md z-btn-success fr"
+            :class="{'z-btn-disabled': isDisabled}"
+            @click="submit"
+        >
+            确认发布
+        </a>
+
+        <div class="fr" style="margin-right: 40px;margin-top: 10px;">
+            <switchBar v-model="formData.offState" title="是否公开"/>
+        </div>
     </div>
 </template>
 
