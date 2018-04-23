@@ -4,7 +4,7 @@
             <div class="topic-head">
                 <div class="topic-title-time">
                     <h1 class="head-title">
-                        <router-link :to="{ path: '/wordpress/' + topic._id }">{{ topic.title}}</router-link>
+                        <router-link :to="{ path: '/detail/wordpress/' + topic._id }">{{ topic.title}}</router-link>
                     </h1>
                     <time class="head-time">
                         <span class="time-day">22</span>
@@ -20,7 +20,7 @@
             </div>
             <div class="topic-body clearfix">
                 <div class="topic-img-wrap">
-                    <router-link class="topic-img-link" :to="{ path: '/wordpress/' + topic._id }">
+                    <router-link class="topic-img-link" :to="{ path: '/detail/wordpress/' + topic._id }">
                         <img class="topic-img" :src="topic.poster" alt="">
                     </router-link>
                 </div>

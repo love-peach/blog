@@ -5,16 +5,21 @@ const _ = require('underscore');
 * 获取文章列表
 * */
 exports.list = function (req, res) {
-    let { limit, page, key } = req.query;
+    let { limit, page, keyword, category } = req.query;
     const sort = '-updateAt';
 
     // 查询条件
     let data = {
         // offState: true
     };
-    if (key) {
-        const reg = new RegExp(key, 'i');
+    if (keyword) {
+        const reg = new RegExp(keyword, 'i');
         data.title = { $regex: reg };
+    }
+
+    if (category) {
+        const reg = new RegExp(category, 'i');
+        data.category = { $regex: reg };
     }
 
     // 分页相关
@@ -104,7 +109,6 @@ exports.toggleOffState = function (req, res) {
  * */
 exports.delete = function (req, res) {
     var id = req.body.id;
-    console.log(id, 'ididid');
     if (id) {
         Article.remove({_id: id}, function (err, article) {
             if (err) {

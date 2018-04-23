@@ -3,6 +3,7 @@
         <div class="z-row">
             <div class="z-col-lg-45 z-col-md-43 z-col-sm-40 z-col-xs-60">
                 <div class="topic-list">
+                    <h2 class="search-tip hover-part-style">搜索：{{this.$route.params.key}}</h2>
                     <topicItem v-for="topic,index in topics.list" :key="index" :topic="topic"/>
                 </div>
                 <div v-if="topics.list.length === 0" class="no-topic-list">

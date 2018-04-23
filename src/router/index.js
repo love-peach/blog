@@ -5,7 +5,7 @@ import home from '../pages/home/index.vue';
 import wordpress from '../pages/wordpress/index.vue';
 import wordpressDetail from '../pages/wordpress-detail/index.vue';
 import wordpressWrite from '../pages/backend-article-write/index.vue';
-import search from '../pages/search/index.vue';
+// import search from '../pages/search/index.vue';
 
 import backend from '../pages/backend/index.vue';
 import backendArticleList from '../pages/backend-article-list/index.vue';
@@ -16,20 +16,49 @@ export function createRouter() {
     return new Router({
         mode: 'history',
         routes: [
-            { name: 'home', path: '/', component: home },
-            { name: 'wordpress', path: '/wordpress', component: wordpress },
             {
-                name: 'article',
-                path: '/wordpress/:id',
+                name: 'home',
+                path: '/',
+                component: home
+            },
+            {
+                name: 'wordpress',
+                path: '/wordpress',
+                component: wordpress
+            },
+            {
+                name: 'category',
+                path: '/wordpress/:category',
+                component: wordpress
+            },
+            {
+                name: 'search',
+                path: '/search/:keyword',
+                component: wordpress
+            },
+            {
+                name: 'detail',
+                path: '/detail/wordpress/:id',
                 component: wordpressDetail,
                 meta: {
                     notKeepAlive: true
                 }
             },
-            { name: 'search', path: '/search/:key', component: search },
-            { name: 'write', path: '/backend/article/write', component: wordpressWrite },
-            { name: 'backend', path: '/backend', component: backend },
-            { name: 'backendArticleList', path: '/backend/article', component: backendArticleList }
+            {
+                name: 'write',
+                path: '/backend/article/write',
+                component: wordpressWrite
+            },
+            {
+                name: 'backend',
+                path: '/backend',
+                component: backend
+            },
+            {
+                name: 'backendArticleList',
+                path: '/backend/article',
+                component: backendArticleList
+            }
         ]
     });
 }

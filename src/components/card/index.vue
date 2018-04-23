@@ -1,5 +1,5 @@
 <template>
-    <div class="card-wrap hover-part-style">
+    <div class="card-wrap">
         <h3 class="card-title">{{ title }}</h3>
         <slot></slot>
     </div>
