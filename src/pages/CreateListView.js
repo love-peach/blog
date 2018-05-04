@@ -2,10 +2,12 @@ import baseConponent from './wordpress/index.vue';
 
 export default function createListView(type) {
     return {
-        name: `${type}-stories-view`,
+        name: `${type}`,
 
-        asyncData({store}) {
-            return store.dispatch('FETCH_LIST_DATA', {type});
+        asyncData({ store, cookies, route }, config = { page: 1 }) {
+            config.cookies = cookies;
+            const { params: { keyword, category }, path } = route;
+            return store.dispatch('frontend/wordpress/getArticleList', {...config, keyword, category, path});
         },
 
         render(h) {

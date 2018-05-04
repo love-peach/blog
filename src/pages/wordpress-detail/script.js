@@ -3,6 +3,10 @@ import cardTag from '../../components/card-tag/index.vue';
 import cardMdNav from '../../components/card-md-nav/index.vue';
 import Grade from '../../assets/js/grade';
 import Tag from '../../components/tag/index.vue';
+import moment from 'moment';
+import language from '../../assets/js/language';
+moment.locale('zh', language);
+
 export default {
     props: [],
     name: 'wordpress-detail',
@@ -15,6 +19,11 @@ export default {
         cardTag,
         cardMdNav,
         Tag
+    },
+    filters: {
+        timeCalendar(value) {
+            return moment(value).calendar();
+        }
     },
     mounted() {
         window.addEventListener('scroll', this.scrollHandler);

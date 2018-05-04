@@ -1,0 +1,21 @@
+@import "../../assets/less/mixins/variable";
+
+.back-top-wrap {
+    position: fixed;
+    bottom: 40px;
+    right: -100px;
+    .back-top {
+        display: inline-block;
+        padding: 10px;
+        line-height: 1;
+        background-color: rgba(66,66,66,.5);
+        color: #fff;
+        cursor: pointer;
+        &:hover {
+            background-color: @colorInfo;
+        }
+    }
+}
+.show-back-top {
+    right: 20px;
+}

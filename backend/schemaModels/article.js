@@ -10,11 +10,28 @@ const ArticleSchema = new Schema({
     tagArr: Array, // 标签-数组
     category: String, // 分类
     categoryName: String, // 分类-显示
-    viewed: Number, // 浏览过
-    likeCount: Number, // 喜欢
-    commentCount: Number, // 评论数
     status: String, // 状态
     statusName: String, // 状态-显示
+    viewed: { // 浏览过
+        type: Number,
+        default: 0
+    },
+    likeCount: { // 喜欢
+        type: Number,
+        default: 0
+    },
+    commentCount: { // 评论数
+        type: Number,
+        default: 0
+    },
+    likes: {
+        type: Array,
+        default: []
+    },
+    downloadTimes: { // 下载次数
+        type: Number,
+        default: 0
+    },
     offState: { // 上架状态
         type: Boolean,
         default: true

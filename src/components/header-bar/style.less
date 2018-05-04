@@ -65,6 +65,58 @@
         }
     }
 
+    .nav-me {
+        padding: 0;
+        .nav-me-link {
+            display: block;
+            padding: 0 15px;
+        }
+        .iconfont {
+            color: @colorGrey;
+            padding: 7px;
+            font-size: 18px;
+            line-height: 1;
+            border-radius: 40px;
+            border: 1px solid @colorGreyLight;
+        }
+        .sub-nav-wrap {
+            display: none;
+            position: absolute;
+            width: 100%;
+            background-color: #fff;
+            border: 1px solid @colorGreyLight;
+        }
+        .sub-nav-item {
+            display: block;
+            padding: 10px;
+            text-align: center;
+            line-height: 1;
+        }
+    }
+    .nav-me:hover {
+        .iconfont {
+            color: @colorInfo;
+            border: 1px solid @colorInfo;
+        }
+        .sub-nav-wrap {
+            display: block;
+        }
+    }
+
+    .nav-me-login {
+        position: relative;
+        .nav-me-link {
+            .iconfont {
+                background-color: @colorSilver;
+            }
+        }
+    }
+    .sub-nav-wrap {
+        position: absolute;
+        display: none;
+    }
+
+
     .nav-menu-wrap {
         position: relative;
         &:hover .nav-menu-list {

@@ -1,4 +1,5 @@
 import card from '../card/index.vue';
+import { mapGetters } from 'vuex';
 
 export default {
     name: 'card-search',
@@ -7,7 +8,6 @@ export default {
     },
     data() {
         return {
-            topIndex: 0,
             categoryList: [
                 {
                     name: '全部文章',
@@ -36,6 +36,11 @@ export default {
             ]
         };
     },
+    computed: {
+        ...mapGetters({
+            topIndex: 'frontend/wordpress/getCardCategoryIndex'
+        })
+    },
     beforeMount() {
         this.checkPathname();
     },
@@ -44,13 +49,12 @@ export default {
             const pathname = window.location.pathname;
             this.categoryList.forEach((item, index) => {
                 if (item.path === pathname) {
-                    this.topIndex = index;
-                    return index;
+                    this.$store.dispatch('frontend/wordpress/setCardCategoryIndex', { index });
                 }
             });
         },
         changeTop(index) {
-            this.topIndex = index;
+            this.$store.dispatch('frontend/wordpress/setCardCategoryIndex', { index });
         }
     }
 };

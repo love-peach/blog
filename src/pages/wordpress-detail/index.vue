@@ -7,7 +7,7 @@
                         <h1 class="title">{{article.data.title}}</h1>
                         <Tag type="primary" size="sm">{{article.data.author}}</Tag>
                         <Tag type="info" size="sm">{{article.data.category}}</Tag>
-                        <Tag type="success" size="sm">{{article.data.createAt}}</Tag>
+                        <Tag type="success" size="sm">{{article.data.createAt | timeCalendar}}</Tag>
                     </div>
                 </div>
             </div>

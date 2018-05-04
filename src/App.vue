@@ -8,17 +8,26 @@
             <router-view v-if="$route.meta.notKeepAlive" ></router-view>
         </div>
         <FooterBar />
+        <BackTop />
+        <SignIn />
+        <SignUp />
     </div>
 </template>
 <script>
     import HeaderBar from './components/header-bar/index.vue';
     import FooterBar from './components/footer-bar/index.vue';
+    import BackTop from './components/back-top/index.vue';
+    import SignIn from './components/signin/index.vue';
+    import SignUp from './components/signup/index.vue';
 
     export default {
         name: 'app',
         components: {
             HeaderBar,
-            FooterBar
+            FooterBar,
+            BackTop,
+            SignIn,
+            SignUp
         },
         computed: {
             backend() {

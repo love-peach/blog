@@ -8,6 +8,8 @@ const microcache = require('route-cache');
 const resolve = file => path.resolve(__dirname, file);
 const {createBundleRenderer} = require('vue-server-renderer');
 const cookieParser = require('cookie-parser');
+const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
 const bodyParser = require('body-parser');
 
 const isProd = process.env.NODE_ENV === 'production';
@@ -15,6 +17,8 @@ const useMicroCache = process.env.MICRO_CACHE !== 'false';
 const serverInfo =
     `express/${require('express/package.json').version} ` +
     `vue-server-renderer/${require('vue-server-renderer/package.json').version}`;
+
+const dbUrl = 'mongodb://localhost:27017/blog';
 
 const port = process.env.PORT || 8080;
 const app = express();
@@ -56,10 +60,20 @@ app.use('/public', serve('./public', true));
 // app.use('/service-worker.js', serve('./dist/service-worker.js'))
 
 // body 解析中间件
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 // cookie 解析中间件
-app.use(cookieParser());
+app.use(cookieParser('blog'));
+app.use(session({
+    name: 'sessionId', // 这里的name值得是cookie的name，默认cookie的name是：connect.sid
+    secret: 'blog',
+    cookie: ({ maxAge: 1000 * 60 * 60 * 24 * 30 }),
+    resave: true, // 重新保存：强制会话保存即使是未修改的。默认为true但是得写上
+    store: new MongoStore({
+        url: dbUrl,
+        collection: 'sessions'
+    })
+}));
 
 require('./backend/db');
 // api 路由
@@ -91,6 +105,10 @@ function createRenderer(bundle, options) {
 }
 
 function render(req, res) {
+    if (!renderer) {
+        return res.end('waiting for compilation... refresh in a moment.')
+    }
+
     const s = Date.now();
 
     res.setHeader('Content-Type', 'text/html');
@@ -110,7 +128,7 @@ function render(req, res) {
     };
 
     const context = {
-        title: 'zhangjinpei', // default title
+        title: 'zhangjinpei',
         description: '张晋佩个人博客',
         url: req.url,
         cookies: req.cookies

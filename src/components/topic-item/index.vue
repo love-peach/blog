@@ -1,5 +1,5 @@
 <template>
-    <div class="topic-item-wrap hover-part-style">
+    <div class="topic-item-wrap">
         <div class="topic-content">
             <div class="topic-head">
                 <div class="topic-title-time">
@@ -7,9 +7,9 @@
                         <router-link :to="{ path: '/detail/wordpress/' + topic._id }">{{ topic.title}}</router-link>
                     </h1>
                     <time class="head-time">
-                        <span class="time-day">22</span>
-                        <span class="time-month">Sept</span>
-                        <span class="time-year">2018</span>
+                        <span class="time-day">{{ topic.createAt | formatDay }}</span>
+                        <span class="time-month">{{ topic.createAt | formatMonth }}</span>
+                        <span class="time-year">{{ topic.createAt | formatYear }}</span>
                     </time>
                 </div>
                 <div class="topic-article-info">

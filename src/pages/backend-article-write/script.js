@@ -17,7 +17,8 @@ export default {
                 poster: '',
                 content: '',
                 offState: true
-            }
+            },
+            articleId: ''
         };
     },
     computed: {
@@ -26,11 +27,12 @@ export default {
         }
     },
     beforeMount() {
-        const { query: { id }, path } = this.$route;
+        const { params: { id }, path } = this.$route;
         if (id) {
-            this.$store.dispatch('frontend/wordpress/getArticleItem', { id, path }).then(() => {
+            this.articleId = id;
+            this.$store.dispatch('backend/wordpress/getArticleItem', { id, path }).then(() => {
                 this.$nextTick(() => {
-                    this.formData = Object.assign({}, this.formData, this.$store.getters['frontend/wordpress/getArticleItem'].data);
+                    this.formData = Object.assign({}, this.formData, this.$store.getters['backend/wordpress/getArticleItem'].data);
                 });
             });
         }
@@ -45,9 +47,9 @@ export default {
                 ...this.formData,
                 author: 'zhangjinpei'
             };
-            api.postArticle(params)
+            api.backendPostArticle(params)
                 .then(function (res) {
-                    vm.$router.push({ path: `/wordpress/${res.data._id}` });
+                    vm.$router.push({ path: `/detail/wordpress/${res.data._id}` });
                 })
                 .catch(function (err) {
                     console.log(err);

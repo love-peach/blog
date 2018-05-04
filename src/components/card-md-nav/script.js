@@ -9,9 +9,13 @@ export default {
         mdAnchorNav
     },
     data() {
-        return {};
+        return {
+            idPrefix: 'titleAnchor-',
+            offsetTopList: []
+        };
     },
     mounted() {
+        this.getOffsetTopList();
         const vm = this;
         this.throttleScroll = vm.throttle(function () {
             vm.scrollHandler();
@@ -24,7 +28,7 @@ export default {
     methods: {
         scrollHandler() {
             const mdAnchorFloatBar = document.getElementById('mdAnchorFloatBar');
-            const distance = -20;
+            const distance = 80;
             const headerList = this.getHeaderList();
             // 对所有的y值为正标的题，按y值升序排序。第一个标题就是当前处于阅读中的段落的标题。也即要高亮的标题
             let readingVO = headerList.filter(function (item) {
@@ -48,23 +52,28 @@ export default {
             mdAnchorFloatBar.style.height = `${readingVO.navTitleClientHeight}px`;
         },
         getHeaderList() {
-            const idPrefix = 'titleAnchor-';
-            let list = [];
+            const list = [];
             for (var i = 0; i < this.articleTitles.length; i++) {
-                let contentTitle = document.getElementById(`${idPrefix}${i}`);
-                let navTitle = document.querySelector(`a[href="#${idPrefix}${i}"]`);
+                let contentTitle = document.getElementById(`${this.idPrefix}${i}`);
+                let navTitle = document.querySelector(`a[id="#${this.idPrefix}${i}"]`);
                 if (!navTitle) {
                     continue;
                 }
                 list.push({
                     y: contentTitle.getBoundingClientRect().top,
-                    navTitleOffsetTop: navTitle.offsetTop,
                     navTitleClientHeight: navTitle.clientHeight,
-                    index: i,
-                    navTitle
+                    index: i
                 });
             }
             return list;
+        },
+        getOffsetTopList() {
+            const list = [];
+            for (var i = 0; i < this.articleTitles.length; i++) {
+                let contentTitle = document.getElementById(`${this.idPrefix}${i}`);
+                list.push(contentTitle.getBoundingClientRect().top);
+            }
+            this.offsetTopList = list;
         },
         throttle(fn, delay) {
             var timer = null;

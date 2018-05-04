@@ -1,7 +1,12 @@
+import api from '../../api/index';
+import cookies from 'js-cookie';
+
 export default {
     name: 'header-bar',
     data() {
         return {
+            userId: cookies.get('userId'),
+            userAccount: cookies.get('userAccount'),
             bodyScrollTop: 0,
             navList: [
                 {
@@ -39,11 +44,26 @@ export default {
         }
     },
     methods: {
-        search() {
-            if (this.searchWord === '') {
-                return false;
+        logout() {
+            api.frontendSignOut()
+                .then(() => {
+                    this.$toast('成功登出', {
+                        icon: 'icon-info',
+                        size: 'sm'
+                    });
+                    setTimeout(() => {
+                        this.$router.go(0);
+                    }, 500);
+                })
+                .catch(err => {
+                    console.log(err);
+                });
+        },
+        login() {
+            if (this.userAccount) {
+                return;
             }
-            this.$router.replace(`/search?qs=${this.searchWord}`);
+            this.$store.dispatch('globalStore/toggleSignInModal', true);
         },
         scrollHandler() {
             const bodyScrollTop = document.documentElement.scrollTop || document.body.scrollTop;

@@ -20,14 +20,13 @@ export default context => {
                 reject({ code: 404 });
             }
             // 对所有匹配的路由组件调用 `asyncData()`
-            console.log(context, 'context11');
 
             Promise.all(matchedComponents.map(Component => {
                 if (Component.asyncData) {
                     return Component.asyncData({
                         store,
                         route: router.currentRoute,
-                        cookies: context.cookies,
+                        cookies: context.cookies
                     });
                 }
             })).then(() => {

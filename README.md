@@ -16,3 +16,8 @@
 2. 展开运算符报错
 
     修改 .babelrc 文件
+
+
+## 参考
+
+[Moment.js中文文档系列之六日期时间的国际化](https://itbilu.com/nodejs/npm/4k1vtctZl.html#i18n-add-locale)

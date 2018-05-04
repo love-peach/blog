@@ -2,7 +2,7 @@
     <card title="目录">
         <div class="md-anchor-nav-wrap">
             <div id="mdAnchorFloatBar" class="md-anchor-float-bar"></div>
-            <mdAnchorNav :list="articleTitles.nav" />
+            <mdAnchorNav :list="articleTitles.nav" :offsetTopList="offsetTopList"/>
         </div>
     </card>
 </template>

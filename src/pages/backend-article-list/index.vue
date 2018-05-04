@@ -22,7 +22,7 @@
                         <template v-else-if="th.key === 'operation' ">
                             <switchBar title="是否上架" :value="topic.offState" activeColor="#83c44e" inactiveColor="#ffac13" @change="(value) => {handleToggleOffState(value, topic._id)}"></switchBar>
                             <a style="margin-left:5px;" href="javascript:;" class="z-btn z-btn-danger" @click="handleDelArticle(topic._id)">删除</a>
-                            <router-link class="z-btn z-btn-info" :to="{ path: '/backend/article/write', query: { id:  topic._id}}">编辑</router-link>
+                            <router-link class="z-btn z-btn-info" :to=" '/backend/article/write/' + topic._id ">编辑</router-link>
 
                             <!--<router-link class="z-btn z-btn-success" :to=" '/wordpress/' + topic._id">查看</router-link>-->
                         </template>

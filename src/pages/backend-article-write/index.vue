@@ -19,7 +19,7 @@
             :class="{'z-btn-disabled': isDisabled}"
             @click="submit"
         >
-            确认发布
+            {{ articleId ? '确认修改' : '确认发布'}}
         </a>
 
         <div class="fr" style="margin-right: 40px;margin-top: 10px;">

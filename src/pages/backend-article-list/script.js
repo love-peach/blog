@@ -13,7 +13,7 @@ export default {
     asyncData({ store, cookies, route }, config = { page: 1 }) {
         config.cookies = cookies;
         const { path } = route;
-        return store.dispatch('frontend/wordpress/getArticleList', {...config, path});
+        return store.dispatch('backend/wordpress/getArticleList', {...config, path});
     },
     components: {
         Tag,
@@ -78,6 +78,7 @@ export default {
                     name: '浏览',
                     key: 'viewed',
                     width: '',
+                    align: 'center',
                     class: 'hidden-xs',
                     type: 'number'
                 },
@@ -85,6 +86,7 @@ export default {
                     name: '赞',
                     key: 'liked',
                     width: '',
+                    align: 'center',
                     class: 'hidden-xs',
                     type: 'number'
                 },
@@ -92,6 +94,7 @@ export default {
                     name: '评论',
                     key: 'comment',
                     width: '',
+                    align: 'center',
                     class: 'hidden-xs',
                     type: 'number'
                 },
@@ -106,7 +109,7 @@ export default {
     },
     computed: {
         ...mapGetters({
-            topics: 'frontend/wordpress/getArticleList'
+            topics: 'backend/wordpress/getArticleList'
         })
     },
     filters: {
@@ -153,9 +156,8 @@ export default {
         },
         // 上下架功能
         handleToggleOffState(value, id) {
-            console.log(id, value);
             const vm = this;
-            api.toggleOffState({offState: value, id})
+            api.backendToggleOffState({offState: value, id})
                 .then(function (res) {
                     console.log(res);
                     if (res.data.ok === 1) {

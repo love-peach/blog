@@ -9,9 +9,7 @@ exports.list = function (req, res) {
     const sort = '-updateAt';
 
     // 查询条件
-    let data = {
-        // offState: true
-    };
+    let data = {};
     if (keyword) {
         const reg = new RegExp(keyword, 'i');
         data.title = { $regex: reg };
@@ -46,10 +44,7 @@ exports.list = function (req, res) {
             const json = {
                 code: 200,
                 data: {
-                    list: article.map(item => {
-                        item.content = `${item.content.substring(0, 380)}...`;
-                        return item;
-                    }),
+                    list: article,
                     total,
                     totalPage,
                     hasNext: totalPage > page ? 1 : 0,

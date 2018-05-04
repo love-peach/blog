@@ -18,7 +18,10 @@ export function createAPI({server}) {
     } else {
         api = {
             get(url, params = {}) {
-                const cookies = parseCookie(params.cookies || {});
+                let cookies = {};
+                if (params.cookies) {
+                    cookies = JSON.parse(JSON.stringify(params.cookies));
+                }
                 return new Promise((resolve, reject) => {
                     axios({
                         url,
@@ -26,7 +29,7 @@ export function createAPI({server}) {
                         headers: {
                             'Access-Control-Allow-Origin': '*',
                             'X-Requested-With': 'XMLHttpRequest',
-                            'Cookie': parseCookie(cookies)
+                            cookie: parseCookie(cookies)
                         },
                         method: 'get'
                     }).then(res => {
@@ -37,7 +40,10 @@ export function createAPI({server}) {
                 });
             },
             post(url, params = {}) {
-                const cookies = parseCookie(params.cookies || {});
+                let cookies = {};
+                if (params.cookies) {
+                    cookies = JSON.parse(JSON.stringify(params.cookies));
+                }
                 return new Promise((resolve, reject) => {
                     axios({
                         url,
@@ -46,7 +52,7 @@ export function createAPI({server}) {
                         headers: {
                             'X-Requested-With': 'XMLHttpRequest',
                             'Content-Type': 'application/x-www-form-urlencoded',
-                            'Cookie': parseCookie(cookies)
+                            'cookie': parseCookie(cookies)
                         }
                     }).then(res => {
                         resolve(res.data);
