@@ -1,17 +1,14 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
-const home = () => import('../pages/home/index.vue');
-const wordpress = () => import('../pages/wordpress/index.vue');
-const category = () => import('../pages/category/index.vue');
-const search = () => import('../pages/search/index.vue');
-const wordpressDetail = () => import('../pages/wordpress-detail/index.vue');
-const wordpressWrite = () => import('../pages/backend-article-write/index.vue');
-
-const backend = () => import('../pages/backend/index.vue');
-const backendArticleList = () => import('../pages/backend-article-list/index.vue');
-
-// const createListView = id => () => import('../pages/CreateListView').then(m => m.default(id));
+import home from '../pages/home/index.vue';
+import wordpress from '../pages/wordpress/index.vue';
+import category from '../pages/category/index.vue';
+import search from '../pages/search/index.vue';
+import wordpressDetail from '../pages/wordpress-detail/index.vue';
+import wordpressWrite from '../pages/backend-article-write/index.vue';
+import backend from '../pages/backend/index.vue';
+import backendArticleList from '../pages/backend-article-list/index.vue';
 
 Vue.use(Router);
 

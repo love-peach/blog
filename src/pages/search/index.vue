@@ -12,8 +12,10 @@
                 </div>
             </div>
             <div class="z-col-lg-15 z-col-md-17 z-col-sm-20 z-col-xs-60">
-                <cardSearch />
-                <cardTag />
+                <div id="jsCardMdNav" class="fixed-side-card">
+                    <cardSearch />
+                    <cardTag />
+                </div>
             </div>
         </div>
     </div>
