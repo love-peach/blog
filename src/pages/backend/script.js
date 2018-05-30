@@ -21,7 +21,7 @@ export default {
                 },
                 {
                     name: '其他',
-                    path: '/backend/article/write',
+                    path: '/backend/other',
                     icon: 'icon-menu'
                 }
             ]

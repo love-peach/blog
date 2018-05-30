@@ -1,11 +1,12 @@
 import { mapGetters } from 'vuex';
-import moment from 'moment';
+import dayjs from 'dayjs';
 import { toThousands } from '../../util/util';
 import api from '../../api/index';
 
 import Tag from '../../components/tag/index.vue';
 import Pagenation from '../../components/pagenation/index.vue';
 import switchBar from '../../components/switch/index.vue';
+import Panel from '../../components/panel/index.vue';
 
 export default {
     name: 'backend-article-list',
@@ -18,7 +19,8 @@ export default {
     components: {
         Tag,
         Pagenation,
-        switchBar
+        switchBar,
+        Panel
     },
     data() {
         return {
@@ -123,7 +125,7 @@ export default {
                     result = toThousands(value);
                     break;
                 case 'date':
-                    result = moment(value).format('YYYY/MM/DD');
+                    result = dayjs(value).format('YYYY/MM/DD');
                     break;
                 case 'array':
                     result = value.join(' ');

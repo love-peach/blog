@@ -5,9 +5,12 @@ import '~assets/less/common.less';
 import '~assets/css/github-markdown.css';
 // import '~assets/css/hljs/monokai-sublime.css';
 import '~assets/css/hljs/solarized_light.css';
+import dayjs from 'dayjs';
+import 'dayjs/locale/zh-cn';
 import ProgressBar from './components/progress-bar/index.vue';
 import Toast from './components/toast/index';
 Vue.use(Toast);
+dayjs.locale('zh-cn');
 
 const loading = (Vue.prototype.$loading = new Vue(ProgressBar).$mount());
 document.body.appendChild(loading.$el);

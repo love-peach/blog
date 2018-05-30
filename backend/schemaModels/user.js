@@ -48,10 +48,12 @@ UserSchema.methods = {
 };
 
 UserSchema.statics = {
-    fetch: function (cb) {
+    fetch: function ({data, sort, skip, limit}, cb) {
         return this
-            .find({})
-            .sort('updateAt')
+            .find(data)
+            .sort(sort)
+            .skip(skip)
+            .limit(limit)
             .exec(cb);
     },
     findByAccount: function (account, cb) {

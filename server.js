@@ -143,3 +143,5 @@ function render(req, res) {
         res.send(html);
     });
 }
+
+module.exports = app;

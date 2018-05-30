@@ -15,7 +15,6 @@ export default {
         };
     },
     mounted() {
-        this.getOffsetTopList();
         const vm = this;
         this.throttleScroll = vm.throttle(function () {
             vm.scrollHandler();
@@ -53,6 +52,7 @@ export default {
         },
         getHeaderList() {
             const list = [];
+            const t = document.documentElement.scrollTop || document.body.scrollTop;
             for (var i = 0; i < this.articleTitles.length; i++) {
                 let contentTitle = document.getElementById(`${this.idPrefix}${i}`);
                 let navTitle = document.querySelector(`a[id="#${this.idPrefix}${i}"]`);
@@ -62,18 +62,12 @@ export default {
                 list.push({
                     y: contentTitle.getBoundingClientRect().top,
                     navTitleClientHeight: navTitle.clientHeight,
+                    contentTitleOffsetTopList: contentTitle.getBoundingClientRect().top + t,
                     index: i
                 });
             }
+            this.offsetTopList = list.map(item => item.contentTitleOffsetTopList);
             return list;
-        },
-        getOffsetTopList() {
-            const list = [];
-            for (var i = 0; i < this.articleTitles.length; i++) {
-                let contentTitle = document.getElementById(`${this.idPrefix}${i}`);
-                list.push(contentTitle.getBoundingClientRect().top);
-            }
-            this.offsetTopList = list;
         },
         throttle(fn, delay) {
             var timer = null;

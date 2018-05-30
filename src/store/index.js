@@ -3,6 +3,8 @@ import Vuex from 'vuex';
 import frontendWordpress from './modules/frontend-wordpress';
 import backendWordpress from './modules/backend-wordpress';
 import backendWrite from './modules/backend-write';
+import backendUser from './modules/backend-user';
+import category from './modules/category';
 import global from './modules/global';
 
 Vue.use(Vuex);
@@ -19,8 +21,10 @@ export function createStore() {
             backend: {
                 namespaced: true,
                 modules: {
+                    user: backendUser,
                     wordpress: backendWordpress,
-                    write: backendWrite
+                    write: backendWrite,
+                    category: category
                 }
             },
             globalStore: {

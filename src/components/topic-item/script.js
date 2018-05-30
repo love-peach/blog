@@ -1,5 +1,5 @@
 import topicItemAction from '../topic-item-action/index.vue';
-import moment from 'moment';
+import dayjs from 'dayjs';
 export default {
     props: {
         topic: {
@@ -13,13 +13,16 @@ export default {
     },
     filters: {
         formatYear(value) {
-            return moment(value).year();
+            return dayjs(value).format('YYYY');
         },
         formatMonth(value) {
-            return moment(value).format('MMM');
+            const monthEnStr = 'January_February_March_April_May_June_July_August_September_October_November_December';
+            const monthEnArr = monthEnStr.split('_');
+            const month = dayjs(value).$M;
+            return monthEnArr[month].slice(0, 4).toUpperCase();
         },
         formatDay(value) {
-            return moment(value).format('DD');
+            return dayjs(value).format('DD');
         }
     },
     data() {

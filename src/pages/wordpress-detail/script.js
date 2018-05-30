@@ -3,9 +3,9 @@ import cardTag from '../../components/card-tag/index.vue';
 import cardMdNav from '../../components/card-md-nav/index.vue';
 import Grade from '../../assets/js/grade';
 import Tag from '../../components/tag/index.vue';
-import moment from 'moment';
-import language from '../../assets/js/language';
-moment.locale('zh', language);
+import dayjs from 'dayjs';
+import relativeTime from 'dayjs/plugin/relativeTime';
+dayjs.extend(relativeTime);
 
 export default {
     props: [],
@@ -21,8 +21,8 @@ export default {
         Tag
     },
     filters: {
-        timeCalendar(value) {
-            return moment(value).calendar();
+        timeFromNow(value) {
+            return dayjs(value).fromNow();
         }
     },
     mounted() {

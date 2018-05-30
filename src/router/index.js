@@ -9,6 +9,8 @@ import wordpressDetail from '../pages/wordpress-detail/index.vue';
 import wordpressWrite from '../pages/backend-article-write/index.vue';
 import backend from '../pages/backend/index.vue';
 import backendArticleList from '../pages/backend-article-list/index.vue';
+import backendUserList from '../pages/backend-user-list/index.vue';
+import backendOther from '../pages/backend-other/index.vue';
 
 Vue.use(Router);
 
@@ -74,6 +76,16 @@ export function createRouter() {
                 name: 'backendArticleList',
                 path: '/backend/article',
                 component: backendArticleList
+            },
+            {
+                name: 'backendUserList',
+                path: '/backend/user',
+                component: backendUserList
+            },
+            {
+                name: 'backendOther',
+                path: '/backend/other',
+                component: backendOther
             }
         ]
     });

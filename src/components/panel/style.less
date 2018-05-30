@@ -1,0 +1,33 @@
+@import "../../assets/less/mixins/variable";
+
+.panel-wrap {
+    margin-bottom: 20px;
+    background-color: #fff;
+    .panel-header {
+        position: relative;
+        padding: 15px 20px;
+        border-bottom: 1px solid @colorSilver;
+        color: @textMiddle;
+        line-height: 35px;
+        &:before {
+            display: block;
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 15px;
+            bottom: 15px;
+            width: 3px;
+            background: linear-gradient(@colorInfo, @colorSuccess)
+        }
+        .header-title {
+
+        }
+        .header-additional {
+
+        }
+    }
+    .panel-content {
+        padding: 20px;
+    }
+}
+

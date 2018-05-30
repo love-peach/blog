@@ -76,6 +76,42 @@ img {
     .clearfix();
 }
 
+/*===== 表格列表 =====*/
+.z-table {
+    width: 100%;
+    border-collapse: collapse;
+    th {
+        border: 1px solid @colorSilver;
+        padding: 10px 5px;
+    }
+    td {
+        padding: 5px;
+        border: 1px solid @colorSilver;
+    }
+    tr:hover {
+        background-color: fade(@colorInfo, 5%);
+    }
+    tr:first-child:hover {
+        background-color: transparent;
+    }
+
+    .img-wrap {
+        display: block;
+        position: relative;
+        padding-top: 60%;
+        overflow: hidden;
+        background-color: #fff;
+        img {
+            position: absolute;
+            width: 100%;
+            top: 50%;
+            left: 50%;
+            margin-top: -22px;
+            margin-left: -35px;
+        }
+    }
+}
+
 /*==== 内凹圆角样式 =====*/
 .concave-radius {
     position: relative;

@@ -32,6 +32,32 @@ exports.backendDelArticle = function (params) {
     return request.del('backend/article/del', params);
 };
 
+// 获取文章列表
+exports.backendGetCategoryList = function (params) {
+    return request.get('backend/article/category/list', params);
+};
+
+// 修改文章分类
+exports.backendPostArticleCategory = function (params) {
+    return request.post('backend/article/category/new', params);
+};
+// 删除文章分类
+exports.backendDelCategory = function (params) {
+    return request.del('backend/article/category/del', params);
+};
+
+/* ===== 用户 ===== */
+
+// 获取用户列表
+exports.backendGetUserList = function (params) {
+    return request.get('backend/user/list', params);
+};
+
+// 删除用户
+exports.backendDelUser = function (params) {
+    return request.del('backend/user/del', params);
+};
+
 /* ==================== 前台 ==================== */
 
 /* ===== 文章 ===== */
