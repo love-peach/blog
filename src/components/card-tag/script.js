@@ -1,4 +1,6 @@
 import card from '../card/index.vue';
+import { mapGetters } from 'vuex';
+
 export default {
     props: [],
     name: 'card-tag',
@@ -6,15 +8,15 @@ export default {
         card
     },
     data() {
-        return {
-            tagList: [
-                'javascript',
-                'html',
-                'css',
-                'mongodb',
-                'nodejs'
-            ]
-        };
+        return {};
+    },
+    computed: {
+        ...mapGetters({
+            tagList: 'backend/tag/getTagList'
+        })
+    },
+    beforeMount() {
+        this.$store.dispatch('backend/tag/getTagList', { page: 1, limit: 100 });
     },
     methods: {}
 };

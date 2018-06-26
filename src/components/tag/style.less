@@ -16,6 +16,52 @@
         margin-right: 0;
     }
 
+    &-close-able {
+        position: relative;
+    }
+    .icon-Close {
+        position: absolute;
+        top: 0;
+        right: 0;
+        font-size: 12px;
+        font-weight: bold;
+        vertical-align: middle;
+        cursor: pointer;
+        text-align: center;
+        border-radius: 3px;
+        &:before {
+            position: relative;
+            top: 1px;
+        }
+        &:hover {
+            background-color: rgba(0,0,0,.4);
+        }
+    }
+    &-lg.tag-close-able {
+        padding-right: 32px;
+        .icon-Close {
+            width: 32px;
+        }
+    }
+    &-md.tag-close-able {
+        padding-right: 28px;
+        .icon-Close {
+            width: 28px;
+        }
+    }
+    &-sm.tag-close-able {
+        padding-right: 24px;
+        .icon-Close {
+            width: 24px;
+        }
+    }
+    &-xs.tag-close-able {
+        padding-right: 20px;
+        .icon-Close {
+            width: 20px;
+        }
+    }
+
     &-lg {
         height: 32px;
         line-height: 32px;
@@ -72,5 +118,7 @@
         //border-color: @colorDark;
         //color: darken(@colorDark, 10%);
     }
+
+
 
 }

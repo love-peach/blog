@@ -1,8 +1,9 @@
 <template>
     <span
-        :class="['tag', type ? `tag-${type}` : '', size ? `tag-${size}` : '']"
+        :class="['tag', type ? `tag-${type}` : '', size ? `tag-${size}` : '', closeAble ? 'tag-close-able' : '']"
         :style="{'border-radius': radius}">
         <slot></slot>
+        <i v-if="closeAble" class="iconfont icon-Close" @click="$emit('close')"></i>
     </span>
 </template>
 

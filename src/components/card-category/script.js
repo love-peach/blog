@@ -7,48 +7,23 @@ export default {
         card
     },
     data() {
-        return {
-            categoryList: [
-                {
-                    name: '全部文章',
-                    path: '/wordpress'
-                },
-                {
-                    name: 'HTML',
-                    path: '/wordpress/html'
-                },
-                {
-                    name: 'CSS',
-                    path: '/wordpress/css'
-                },
-                {
-                    name: 'JavaScript',
-                    path: '/wordpress/JavaScript'
-                },
-                {
-                    name: 'Vue',
-                    path: '/wordpress/vue'
-                },
-                {
-                    name: 'Tools',
-                    path: '/wordpress/tools'
-                }
-            ]
-        };
+        return {};
     },
     computed: {
         ...mapGetters({
-            topIndex: 'frontend/wordpress/getCardCategoryIndex'
+            topIndex: 'frontend/wordpress/getCardCategoryIndex',
+            categoryList: 'backend/category/getCategoryList'
         })
     },
     beforeMount() {
         this.checkPathname();
+        this.$store.dispatch('backend/category/getCategoryList', { page: 1, limit: 100 });
     },
     methods: {
         checkPathname() {
             const pathname = window.location.pathname;
-            this.categoryList.forEach((item, index) => {
-                if (item.path === pathname) {
+            this.categoryList.list.forEach((item, index) => {
+                if (`/wordpress/${item.value}` === pathname) {
                     this.$store.dispatch('frontend/wordpress/setCardCategoryIndex', { index });
                 }
             });

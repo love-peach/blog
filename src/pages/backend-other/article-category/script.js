@@ -72,8 +72,8 @@ export default {
                         icon: 'icon-success',
                         duration: 1500
                     });
-                    vm.closeArticleCategoryModal();
                     vm.$store.dispatch('backend/category/changeDataLocal', {...res.data, changeType: articleCategory.id ? 'edit' : 'add'});
+                    vm.closeArticleCategoryModal();
                 })
                 .catch(function (err) {
                     console.log(err);

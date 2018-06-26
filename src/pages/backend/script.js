@@ -20,6 +20,11 @@ export default {
                     icon: 'icon-article-manager'
                 },
                 {
+                    name: '前端资源配置',
+                    path: '/backend/resources',
+                    icon: 'icon-article-manager'
+                },
+                {
                     name: '其他',
                     path: '/backend/other',
                     icon: 'icon-menu'

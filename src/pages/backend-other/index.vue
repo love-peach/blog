@@ -2,6 +2,7 @@
     <div class="backend-other-wrap">
         <div class="z-container">
             <ArticleCategory />
+            <ArticleTag />
         </div>
     </div>
 </template>

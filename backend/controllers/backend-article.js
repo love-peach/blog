@@ -8,7 +8,7 @@ const axios = require('axios');
 * */
 exports.list = function (req, res) {
     let { limit, page, keyword, category } = req.query;
-    const sort = '-updateAt';
+    const sort = '-createAt';
 
     // 查询条件
     let data = {};
@@ -129,12 +129,7 @@ exports.delete = function (req, res) {
 exports.save = (req, res) => {
     const articleObj = req.body;
     const id = articleObj._id;
-    const tagArr = articleObj.tag.split(',');
     let article;
-    const articleData = {
-        ...articleObj,
-        tagArr
-    };
     if (id) {
         Article.findById(id, function (err, result) {
             if (err) {
@@ -143,7 +138,7 @@ exports.save = (req, res) => {
                     message: err.toString()
                 });
             } else {
-                article = _.extend(result, articleData);
+                article = _.extend(result, articleObj);
                 article.save(function (err, result) {
                     if (err) {
                         res.json({
@@ -161,7 +156,7 @@ exports.save = (req, res) => {
             }
         });
     } else {
-        article = new Article(articleData);
+        article = new Article(articleObj);
         article.save(function (err, result) {
             if (err) {
                 res.json({
@@ -177,31 +172,4 @@ exports.save = (req, res) => {
             }
         });
     }
-};
-
-exports.family = (req, res) => {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "X-Requested-With");
-    res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
-    res.header("X-Powered-By",' 3.2.1')
-    res.header("Content-Type", "application/json;charset=utf-8");
-    // res.status(500).json();
-    res.json({
-        code: 200,
-        message: '获取成功',
-        data: [
-            {
-                name: '刘娟娟',
-                age: 18
-            },
-            {
-                name: '张晋佩',
-                age: 18
-            },
-            {
-                name: '张岚',
-                age: 3
-            }
-        ]
-    });
 };

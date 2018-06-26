@@ -1,0 +1,57 @@
+@import "../../assets/less/mixins/variable";
+
+.comment-list-wrap {
+    li {
+        //padding: 10px 0;
+        margin-bottom: 20px;
+        padding-top: 20px;
+        border-top: 1px solid @borderColor;
+        position: relative;
+    }
+    li:hover .comment-reply-btn {
+        display: inline-block;
+    }
+    .comment-avatar {
+        float: left;
+        width: 44px;
+        height: 44px;
+        border-radius: 44px;
+        border: 1px solid red;
+    }
+    .comment-box {
+        margin: 0 20px 0 64px;
+    }
+    .comment-meta {
+        margin-bottom: 8px;
+    }
+    .comment-name {
+        color: @colorSuccess;
+        margin-right: 10px;
+    }
+    .comment-time {
+        color: @colorGrey;
+        margin-right: 10px;
+    }
+    .comment-reply-btn {
+        display: none;
+        color: @colorInfo;
+        cursor: pointer;
+    }
+    .comment-index {
+        float: right;
+        position: relative;
+        top: 8px;
+        font-size: 20px;
+        color: @colorGrey;
+        font-style: italic;
+    }
+}
+.comment-list-wrap.child {
+    margin: 20px auto auto 64px;
+    .comment-index {
+        display: none;
+    }
+    //li {
+    //    margin: 20px auto auto 64px;
+    //}
+}

@@ -5,6 +5,8 @@ import backendWordpress from './modules/backend-wordpress';
 import backendWrite from './modules/backend-write';
 import backendUser from './modules/backend-user';
 import category from './modules/category';
+import tag from './modules/tag';
+import resource from './modules/resource';
 import global from './modules/global';
 
 Vue.use(Vuex);
@@ -24,7 +26,9 @@ export function createStore() {
                     user: backendUser,
                     wordpress: backendWordpress,
                     write: backendWrite,
-                    category: category
+                    category: category,
+                    tag: tag,
+                    resource: resource
                 }
             },
             globalStore: {

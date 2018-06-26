@@ -7,7 +7,7 @@ const fs = require('fs');
  * */
 exports.list = function (req, res) {
     let { limit, page, keyword, category } = req.query;
-    const sort = '-updateAt';
+    const sort = '-createAt';
 
     // 查询条件
     let data = {
@@ -15,7 +15,11 @@ exports.list = function (req, res) {
     };
     if (keyword) {
         const reg = new RegExp(keyword, 'i');
-        data.title = { $regex: reg };
+        data.$or = [
+            {tag: reg},
+            {content: reg},
+            {title: reg}
+        ];
     }
 
     if (category) {

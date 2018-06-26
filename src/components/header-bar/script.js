@@ -15,19 +15,19 @@ export default {
                 },
                 {
                     name: '前端技术',
-                    path: '/wordpress'
+                    path: '/wordpress/'
                 },
                 {
                     name: '图文有感',
-                    path: '/thoughts'
+                    path: '/thoughts/'
                 },
                 {
                     name: '前端资源',
-                    path: '/resources'
+                    path: '/resources/'
                 },
                 {
                     name: '留言',
-                    path: '/board'
+                    path: '/board/'
                 }
             ]
         };

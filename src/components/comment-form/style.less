@@ -1,0 +1,76 @@
+@import "../../assets/less/mixins/variable";
+
+.comment-form-wrap {
+    .user-avatar {
+        display: inline-block;
+        width: 44px;
+        height: 44px;
+        border-radius: 44px;
+        border: 1px solid red;
+        float: left;
+    }
+    .comment-form {
+        margin-left: 64px;
+
+
+        .form-box {
+            position: relative;
+            width: 100%;
+            height: 6em;
+            background-color: #fff;
+            &:before {
+                content: "";
+                position: absolute;
+                display: block;
+                width: 14px;
+                height: 14px;
+                top: 14px;
+                left: -7px;
+                border: 1px solid @borderColor;
+                border-width: 0 0 1px 1px;
+                background-color: inherit;
+                -webkit-transform: rotate(45deg);
+                transform: rotate(45deg);
+            }
+            textarea {
+                width: 100%;
+                height: 100%;
+                border: 1px solid @borderColor;
+                outline: none;
+                resize: none;
+                padding: 10px;
+                font: inherit;
+                &:focus {
+                    border-color: @colorInfo;
+                }
+            }
+        }
+        .form-box:focus {
+            &:before {
+                border-color: @colorInfo;
+            }
+        }
+        .form-bottom {
+            margin-top: 10px;
+            text-align: right;
+        }
+        .user-name {
+            float: left;
+            margin-top: 5px;
+            span {
+                color: @colorSuccess;
+            }
+        }
+        .form-bottom-tip {
+            margin-right: 5px;
+            color: @textSmall;
+        }
+    }
+    .comment-without-login {
+        color: @textMiddle;
+        .btn-login {
+            cursor: pointer;
+            color: @colorInfo;
+        }
+    }
+}

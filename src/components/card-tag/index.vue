@@ -3,10 +3,10 @@
         <div class="hot-tag-list">
             <router-link
                 class="hot-tag-item"
-                v-for="tag,index in tagList"
-                :to=" '/search/' + tag"
+                v-for="tag,index in tagList.list"
+                :to=" '/search/' + tag.name"
                 :key="index"
-            >{{ tag }}
+            >{{ tag.name }}
             </router-link>
         </div>
     </card>

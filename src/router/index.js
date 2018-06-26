@@ -7,9 +7,12 @@ import category from '../pages/category/index.vue';
 import search from '../pages/search/index.vue';
 import wordpressDetail from '../pages/wordpress-detail/index.vue';
 import wordpressWrite from '../pages/backend-article-write/index.vue';
+import resources from '../pages/resources/index.vue';
+import board from '../pages/board/index.vue';
 import backend from '../pages/backend/index.vue';
 import backendArticleList from '../pages/backend-article-list/index.vue';
 import backendUserList from '../pages/backend-user-list/index.vue';
+import backendResources from '../pages/backend-resources/index.vue';
 import backendOther from '../pages/backend-other/index.vue';
 
 Vue.use(Router);
@@ -68,6 +71,16 @@ export function createRouter() {
                 component: wordpressWrite
             },
             {
+                name: 'resources',
+                path: '/resources',
+                component: resources
+            },
+            {
+                name: 'board',
+                path: '/board',
+                component: board
+            },
+            {
                 name: 'backend',
                 path: '/backend',
                 component: backend
@@ -81,6 +94,11 @@ export function createRouter() {
                 name: 'backendUserList',
                 path: '/backend/user',
                 component: backendUserList
+            },
+            {
+                name: 'backendResources',
+                path: '/backend/resources',
+                component: backendResources
             },
             {
                 name: 'backendOther',

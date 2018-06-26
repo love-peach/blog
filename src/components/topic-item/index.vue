@@ -15,7 +15,7 @@
                 <div class="topic-article-info">
                     <span class="info-author">作者: {{ topic.author }}</span>
                     <span class="info-category">分类: {{ topic.category }}</span>
-                    <span class="info-tag">标签: {{ topic.tagArr.join(' ') }}</span>
+                    <span class="info-tag">标签: {{ topic.tag.join(' ') }}</span>
                 </div>
             </div>
             <div class="topic-body clearfix">

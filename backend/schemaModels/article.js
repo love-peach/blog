@@ -6,8 +6,8 @@ const ArticleSchema = new Schema({
     author: String, // 作者
     content: String, // 原数据
     poster: String, // 海报
-    tag: String, // 标签
-    tagArr: Array, // 标签-数组
+    tag: Array, // 标签
+    // tagArr: Array, // 标签-数组
     category: String, // 分类
     categoryName: String, // 分类-显示
     status: String, // 状态

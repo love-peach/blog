@@ -11,6 +11,10 @@ export default {
         radius: {
             type: [String, Number],
             default: 0
+        },
+        closeAble: {
+            type: Boolean,
+            default: false
         }
     },
     name: 'tag',
